@@ -40,6 +40,40 @@ class MainActivity : AppCompatActivity() {
         val bamarillo: Button = findViewById(R.id.amarillo)
         val bazul: Button = findViewById(R.id.azul)
         val bverde: Button = findViewById(R.id.verde)
+        botonJugar.setOnClickListener() {
+            mostrarRonda()
+            secuenciaUser.clear()
+            ejecutarSecuencia()
+
+
+        }
+        bcomprobar.setOnClickListener(){
+            comprobarSecuencia()
+        }
+        bverde.setOnClickListener(){
+            secuenciaUser.add(1)
+            val job = GlobalScope.launch(Dispatchers.Main) {
+                suspenderVerde(bverde, verdeClaro, verde)
+            }
+        }
+        brojo.setOnClickListener(){
+            secuenciaUser.add(2)
+            val job2 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderRojo(brojo, rojoClaro, rojo)
+            }
+        }
+        bazul.setOnClickListener(){
+            secuenciaUser.add(3)
+            val job3 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderAzul(bazul, azulClaro, azul)
+            }
+        }
+        bamarillo.setOnClickListener(){
+            secuenciaUser.add(4)
+            val job4 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderAmarillo(bamarillo, amarilloClaro, amarillo)
+            }
+        }
 
     }
 
