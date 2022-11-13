@@ -3,7 +3,10 @@ package com.example.simondiceencasa
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,4 +38,18 @@ class MainActivity : AppCompatActivity() {
         val bverde: Button = findViewById(R.id.verde)
 
     }
+
+    fun mostrarRonda() {
+
+        val tContador: TextView = findViewById(R.id.contador)
+        contadorRonda++
+        tContador.text=( "Puntos: "+contadorRonda.toString())
+        Log.d("estado", "aparece marcador de ronda")
+        Toast.makeText(this, "Mostramos contador " + contadorRonda, Toast.LENGTH_LONG).show()
+
+        Log.d("estado", "ronda:" + contadorRonda)
+
+    }
+
 }
+
