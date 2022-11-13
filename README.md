@@ -8,17 +8,17 @@ En la siguiente imagen podemos ver el menu de juego, que consta de un título,
 un contador, cuatro botoens de colores y dos botoens uno para jugar y otro para 
 comprobar la secuencia.
 
-![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/pantellaprincipal.jpg)
+![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/pantellaprincipal.PNG)
 
 
 En la siguiente imagen podemos ver el contador modificado tras dos rondas jugadas.
 
-![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/puntos.jpg)
+![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/puntos.PNG)
 
 En la siguiente imagen podemos ver el mensaje que nos salen tras haber superado una ronda.
 
-![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/ronda.jpg)
+![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/ronda.PNG)
 
 En la siguiente imagen podemos ver el mensaje que nos sale tras perder.
 
-![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/perdiste.jpg)
+![alt text](https://github.com/davidbrodrigues/SimondiceEnCasa/perdiste.PNG)
