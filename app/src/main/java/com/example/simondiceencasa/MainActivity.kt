@@ -94,6 +94,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun comprobarSecuencia(){
+        if (secuencia.size == secuenciaUser.size){
+            if (secuencia==secuenciaUser){
+                Toast.makeText(this, "Ronda " + contadorRonda + " SUPERADA", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this, "PERDISTE MANCO", Toast.LENGTH_LONG).show()
+            }
+        }else{
+            Toast.makeText(this, "PERDISTE MANCO", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
     suspend fun suspenderJugar(bverde: Button,brojo: Button, bazul: Button,bamarillo: Button) {
         posicion=0
 
