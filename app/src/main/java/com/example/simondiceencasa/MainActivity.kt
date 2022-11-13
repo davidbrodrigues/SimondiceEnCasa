@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -90,6 +91,76 @@ class MainActivity : AppCompatActivity() {
         }
         Log.d("estado" , "se ejecuta la secuencia " + secuencia[posicion])
 
+
+    }
+
+    suspend fun suspenderJugar(bverde: Button,brojo: Button, bazul: Button,bamarillo: Button) {
+        posicion=0
+
+        for (i in 1..contadorRonda) {
+
+
+            delay(1000L - contadorRonda*100)
+
+            when (secuencia[posicion]) {
+
+
+                1 -> {
+                    val job = GlobalScope.launch(Dispatchers.Main) {
+                        suspenderVerde(bverde, verdeClaro, verde)
+                    }
+                }
+
+                2 -> {
+                    val job2 = GlobalScope.launch(Dispatchers.Main) {
+                        suspenderRojo(brojo, rojoClaro, rojo)
+                    }
+                }
+                3 -> {
+                    val job3 = GlobalScope.launch(Dispatchers.Main) {
+                        suspenderAzul(bazul, azulClaro, azul)
+                    }
+                }
+                4 -> {
+                    val job4 = GlobalScope.launch(Dispatchers.Main) {
+                        suspenderAmarillo(bamarillo, amarilloClaro, amarillo)
+                    }
+                }
+
+            }
+            posicion++
+
+
+
+        }
+    }
+
+    suspend fun suspenderVerde(bverde: Button, colorChange: Int, colorDefault: Int) {
+        bverde.setBackgroundColor(colorChange)
+        delay(500L - contadorRonda*50)
+        bverde.setBackgroundColor(colorDefault)
+        delay(500L - contadorRonda*50)
+    }
+
+    suspend fun suspenderRojo(brojo: Button, colorChange: Int, colorDefault: Int) {
+        brojo.setBackgroundColor(colorChange)
+        delay(500L  - contadorRonda*50)
+        brojo.setBackgroundColor(colorDefault)
+        delay(500L  - contadorRonda*50)
+    }
+
+    suspend fun suspenderAzul(bazul: Button, colorChange: Int, colorDefault: Int) {
+        bazul.setBackgroundColor(colorChange)
+        delay(500L  - contadorRonda*50)
+        bazul.setBackgroundColor(colorDefault)
+        delay(500L  - contadorRonda*50)
+    }
+
+    suspend fun suspenderAmarillo(bamarillo: Button, colorChange: Int, colorDefault: Int) {
+        bamarillo.setBackgroundColor(colorChange)
+        delay(500L  - contadorRonda*50)
+        bamarillo.setBackgroundColor(colorDefault)
+        delay(500L  - contadorRonda*50)
 
     }
 
