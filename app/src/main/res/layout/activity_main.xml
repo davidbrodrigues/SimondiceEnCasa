@@ -24,13 +24,51 @@
         android:id="@+id/contador"
         android:layout_width="100dp"
         android:layout_height="43dp"
+        android:layout_marginStart="155dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="156dp"
-        android:textAlignment="center"
         android:text="Ronda: 0"
+        android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/rojo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <Button
+        android:id="@+id/azul"
+        android:layout_width="188dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="272dp"
+        android:backgroundTint="#133793"
+        android:text="azul"
+        android:textColor="#133793"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rojo" />
+
+    <Button
+        android:id="@+id/comprobar"
+        android:layout_width="377dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#686868"
+        android:text="COMPROBAR"
+        android:textSize="22sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/jugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amarillo" />
 
     <Button
         android:id="@+id/rojo"
@@ -42,9 +80,43 @@
         android:backgroundTint="#930909"
         android:text="rojo"
         android:textColor="#930909"
+        app:layout_constraintBottom_toTopOf="@+id/azul"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contador" />
+
+    <Button
+        android:id="@+id/amarillo"
+        android:layout_width="188dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="272dp"
+        android:backgroundTint="#957F0E"
+        android:text="amarillo"
+        android:textColor="#957F0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/azul"
+        app:layout_constraintTop_toBottomOf="@+id/verde" />
+
+    <Button
+        android:id="@+id/jugar"
+        android:layout_width="380dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="65dp"
+        android:backgroundTint="#686868"
+        android:text="JUGAR"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comprobar" />
 
     <Button
         android:id="@+id/verde"
@@ -61,66 +133,4 @@
         app:layout_constraintStart_toEndOf="@+id/rojo"
         app:layout_constraintTop_toBottomOf="@+id/contador" />
 
-    <Button
-        android:id="@+id/amarillo"
-        android:layout_width="188dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="272dp"
-        android:backgroundTint="#957F0E"
-        android:text="amarillo"
-        android:textColor="#957F0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/azul"
-        app:layout_constraintTop_toBottomOf="@+id/verde" />
-
-    <Button
-        android:id="@+id/azul"
-        android:layout_width="188dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="204dp"
-        android:layout_marginBottom="272dp"
-        android:backgroundTint="#133793"
-        android:text="azul"
-        android:textColor="#133793"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rojo" />
-
-    <Button
-        android:id="@+id/comprobar"
-        android:layout_width="377dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="17dp"
-        android:backgroundTint="#686868"
-        android:textSize="22sp"
-        android:visibility="visible"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="16dp"
-        android:text="COMPROBAR"
-        app:layout_constraintBottom_toTopOf="@+id/jugar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amarillo" />
-
-    <Button
-        android:id="@+id/jugar"
-        android:layout_width="380dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="65dp"
-        android:text="JUGAR"
-        android:backgroundTint="#686868"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comprobar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
