@@ -7,6 +7,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +51,45 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Mostramos contador " + contadorRonda, Toast.LENGTH_LONG).show()
 
         Log.d("estado", "ronda:" + contadorRonda)
+
+    }
+
+    fun ejecutarSecuencia() {
+
+        val bverde: Button = findViewById(R.id.verde)
+        val brojo: Button = findViewById(R.id.rojo)
+        val bazul: Button = findViewById(R.id.azul)
+        val bamarillo: Button = findViewById(R.id.amarillo)
+        val randomInt = (1..4).random()
+        Log.d("estado", "se ejecuta la secuencia " + randomInt)
+
+
+
+        when (randomInt) {
+
+
+            1 -> {
+                secuencia.add(1)
+            }
+            2 -> {
+                secuencia.add(2)
+            }
+            3 -> {
+                secuencia.add(3)
+            }
+            4 -> {
+                secuencia.add(4)
+            }
+
+        }
+        println(secuencia)
+        Log.d("estado" , "se guarda la secuencia " + secuencia[posicion])
+
+        val job = GlobalScope.launch(Dispatchers.Main) {
+            suspenderJugar(bverde,brojo,bazul,bamarillo)
+        }
+        Log.d("estado" , "se ejecuta la secuencia " + secuencia[posicion])
+
 
     }
 
