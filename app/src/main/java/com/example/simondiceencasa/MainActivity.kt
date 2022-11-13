@@ -3,6 +3,7 @@ package com.example.simondiceencasa
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,5 +26,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val botonJugar: Button = findViewById(R.id.jugar)
+        val bcomprobar: Button = findViewById(R.id.comprobar)
+        val brojo: Button = findViewById(R.id.rojo)
+        val bamarillo: Button = findViewById(R.id.amarillo)
+        val bazul: Button = findViewById(R.id.azul)
+        val bverde: Button = findViewById(R.id.verde)
+
     }
 }
