@@ -11,6 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val miModelo by viewModels<MyViewModel>()
 
         val botonJugar: Button = findViewById(R.id.jugar)
         val bcomprobar: Button = findViewById(R.id.comprobar)
@@ -78,14 +81,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarRonda() {
+        val miModelo by viewModels<MyViewModel>()
+// observamos cambios en livedata
+        miModelo.livedata_contadorRonda.observe(
+            this,
+            Observer(
+            fun (nuevaSecuencia: MutableList<Int>){
+                contadorRonda = nuevaSecuencia.size
 
+            }
+
+            )
+        )
         val tContador: TextView = findViewById(R.id.contador)
-        contadorRonda++
-        tContador.text=( "Puntos: "+contadorRonda.toString())
-        Log.d("estado", "aparece marcador de ronda")
-        Toast.makeText(this, "Mostramos contador " + contadorRonda, Toast.LENGTH_LONG).show()
-
-        Log.d("estado", "ronda:" + contadorRonda)
+        tContador.text=( "Puntos: "+miModelo.si().toString())
 
     }
 
@@ -134,9 +143,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ronda " + contadorRonda + " SUPERADA", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(this, "PERDISTE MANCO", Toast.LENGTH_LONG).show()
+
             }
         }else{
             Toast.makeText(this, "PERDISTE MANCO", Toast.LENGTH_LONG).show()
+
         }
 
     }
