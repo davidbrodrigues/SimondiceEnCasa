@@ -1,12 +1,22 @@
 package com.example.simondiceencasa;
 
+import android.app.Application
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-public class MyViewModel: ViewModel() {
+public class MyViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val context = getApplication<Application>().applicationContext
+
+    val ronda = MutableLiveData<Int>()
+    var record = MutableLiveData<Int?>()
     // para que sea mas facil la etiqueta del log
     private val TAG_LOG: String = "mensaje ViewModel"
 
@@ -37,4 +47,20 @@ public class MyViewModel: ViewModel() {
         Log.d("estado", "ronda:" + contadorRonda)
         return contadorRonda[contadorRonda.lastIndex]
     }
+
+    //acceso a la BD
+    dato = Dato
+    .databaseBuilder(context,
+    RecordDB::class.java, "datos")
+    .build()
+    val datoCorrutine = GlobalScope.launch(Dispatchers.Main) {
+        try {
+            record.value = datoCorrutine!!.recordDao().getPuntuacion
+        } catch(ex : NullPointerException) {
+            datoCorrutine!!.recordDao().crearPuntuacion()
+            record.value = datoCorrutine!!.recordDao().getPuntuacion()
+        }
+    }
+    datoCorroutine.start()
+
 }
