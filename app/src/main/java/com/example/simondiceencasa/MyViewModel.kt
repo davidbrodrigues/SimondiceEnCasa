@@ -53,14 +53,25 @@ public class MyViewModel(application: Application) : AndroidViewModel(applicatio
     .databaseBuilder(context,
     RecordDB::class.java, "datos")
     .build()
-    val datoCorrutine = GlobalScope.launch(Dispatchers.Main) {
+
+    val Courrutine = GlobalScope.launch(Dispatchers.Main) {
+
         try {
-            record.value = datoCorrutine!!.recordDao().getPuntuacion
+            record.value = dato!!.UserDao().getAll()
         } catch(ex : NullPointerException) {
-            datoCorrutine!!.recordDao().crearPuntuacion()
-            record.value = datoCorrutine!!.recordDao().getPuntuacion()
+            dato!!.UserDao().insert(listOf(Dato))
+            record.value = dato!!.UserDao().getall()
         }
     }
-    datoCorroutine.start()
+    Corroutine.start() /**Lanzamos**/
+
+    fun actualizar(){
+        record.value = ronda.value
+        val newREcord = GlobalScope.launch(Dispatchers.Main){
+            dato!!.UserDao().update(listOf(Dato))
+
+        }
+
+    }
 
 }
