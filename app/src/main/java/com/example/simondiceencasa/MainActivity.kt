@@ -1,12 +1,17 @@
 package com.example.simondiceencasa
 
+import android.content.ContentValues.TAG
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -18,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     var secuencia = ArrayList<Int>()
     var posicion: Int = 0;
     var secuenciaUser = ArrayList<Int>()
-    var porcentaje: Int = 100;
+
 
     val rojo = Color.alpha(R.color.red)
     val verde = Color.alpha(R.color.green)
@@ -30,7 +35,22 @@ class MainActivity : AppCompatActivity() {
     val amarilloClaro = Color.parseColor("#FFFE00")
     val azulClaro = Color.parseColor("#00FFF9")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    //añadimos variables para el metodo de database
+    private lateinit var database: DatabaseReference
+    lateinit var myRef:DatabaseReference
+
+    fun initializeDbRef() {
+        // [START initialize_database_ref]
+        database = Firebase.database.reference
+        // [END initialize_database_ref]
+    }
+    fun writeNewPuntos(userId: Int, puntos: Int) {
+        database.child("puntuacion").child(userId.toString()).setValue(contadorRonda)
+    }
+
+
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -44,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             mostrarRonda()
             secuenciaUser.clear()
             ejecutarSecuencia()
+            database()
 
 
         }
@@ -77,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun mostrarRonda() {
+    fun mostrarRonda(): Int {
 
         val tContador: TextView = findViewById(R.id.contador)
         contadorRonda++
@@ -86,8 +107,31 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Mostramos contador " + contadorRonda, Toast.LENGTH_LONG).show()
 
         Log.d("estado", "ronda:" + contadorRonda)
+        return contadorRonda;
 
     }
+
+//metodo añadir dato de puntos a firebase realtime database
+    private fun database() {
+        val database = Firebase.database("https://simon-dice-firebase-default-rtdb.firebaseio.com")
+        myRef = database.getReference("Puntos")
+        val bcomprobar: Button = findViewById(R.id.comprobar)
+        bcomprobar.setOnClickListener (object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+
+                var texto = contadorRonda
+                myRef.setValue(texto)
+
+            }
+        })
+
+    }
+
+
+
+
+
+
 
     fun ejecutarSecuencia() {
 
@@ -211,5 +255,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-}
+
+    }
+
 
